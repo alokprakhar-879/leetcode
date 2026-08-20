@@ -1,16 +1,19 @@
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
 class Solution:
-    def resultArray(self, nums: List[int]) -> List[int]:
+    def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        
+        prev = None
+        current = head
 
-        arr1 = []
-        arr2 = []
+        while current:
+            next_node = current.next  
+            current.next = prev       
+            prev = current           
+            current = next_node    
+        
 
-        arr1.append(nums[0])
-        arr2.append(nums[1])
-
-        for i in range(2, len(nums)):
-            if arr1[-1] > arr2[-1]:
-                arr1.append(nums[i])
-            else:
-                arr2.append(nums[i])
-
-        return arr1 + arr2
+        return prev
