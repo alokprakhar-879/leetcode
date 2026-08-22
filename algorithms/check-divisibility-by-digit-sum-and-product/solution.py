@@ -1,19 +1,13 @@
-# Definition for singly-linked list.
-# class ListNode:
-#     def __init__(self, val=0, next=None):
-#         self.val = val
-#         self.next = next
 class Solution:
-    def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        
-        prev = None
-        current = head
+    def checkDivisibility(self, n: int) -> bool:
+        original = n
+        s = 0
+        m = 1
 
-        while current:
-            next_node = current.next  
-            current.next = prev       
-            prev = current           
-            current = next_node    
-        
+        while n > 0:
+            digit = n % 10
+            s += digit
+            m *= digit
+            n //= 10
 
-        return prev
+        return original % (s + m) == 0
